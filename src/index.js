@@ -7,7 +7,7 @@ const execute_app = express()
 execute_app.listen(port, ()=>{console.log('listening the port', port)})
 
 execute_app.get('/', (req, res) => {
-    res.send('Primer proyecto')
+    res.send('Hello World!')
 })
 
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING)
@@ -18,3 +18,5 @@ const clientSchemaRoutes = require('./routes/client_routes')
 execute_app.use(express.json())
 
 execute_app.use('/dashboard', clientSchemaRoutes)
+const productSchemaRoutes = require('./routes/product_routes')
+execute_app.use('/dashboard', productSchemaRoutes)
